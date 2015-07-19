@@ -31,4 +31,6 @@ public interface GameState
 	{
 		
 	}
+
+	public default void setTab(boolean b){}
 }

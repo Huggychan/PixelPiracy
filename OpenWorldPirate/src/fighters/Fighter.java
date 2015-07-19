@@ -28,7 +28,7 @@ int threshHoldXp = 10;
 ArrayList<Status> statuses;
 boolean ready = false;
 boolean living = true;
-public Fighter(Image img, String name, int width, int height, int health, int attack, int speed, int def,int magicPower, int hpGrowth, int atkGrowth, int spdGrowth, int dfGrowth, int magicPowerGrowth)
+public Fighter(Image img, String name, int width, int height, int health, int attack, int speed,int magicPower, int hpGrowth, int atkGrowth, int spdGrowth,int magicPowerGrowth)
 {
 	this.name = name;
 this.statuses =  new ArrayList<Status>();
@@ -39,11 +39,9 @@ this.maxHealth = health;
 this.currentHealth = health;
 this.attack = attack;
 this.speed = speed;
-this.defense = def;
 this.hpGrowth = hpGrowth;
 this.atkGrowth = atkGrowth;
 this.spdGrowth = spdGrowth;
-this.dfGrowth = dfGrowth;
 this.abilities = new Ability[5];
 this.magicPower = magicPower;
 this.magicPowerGrowth = magicPowerGrowth;
@@ -224,5 +222,12 @@ public int getMana() {
 public void lowerMana(int manaCost) 
 {
 	this.currentMana-= manaCost;
+}
+public void restoreMana(int i) 
+{
+	if(currentMana+i < maxMana)
+	{
+	this.currentMana+=i;
+	}
 }
 }

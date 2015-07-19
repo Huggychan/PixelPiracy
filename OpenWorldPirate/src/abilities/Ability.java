@@ -28,7 +28,7 @@ public class Ability {
 	}
 	public static Ability heal(Fighter f)
 	{
-		Ability heal = new Ability("Heal", "Heals the team by 10% missing health", f,20, new AbilityEffect(){
+		Ability heal = new Ability("Heal", "Heals the team by your magic power", f,20, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters, Fighter fighter) 
@@ -47,7 +47,7 @@ public class Ability {
 
 	public static Ability punch(Fighter f) 
 	{
-		return new Ability("Punch","Punches the opposing front line", f,0, new AbilityEffect(){
+		return new Ability("Punch","Punches the opposing front line for your attack", f,0, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -60,7 +60,7 @@ public class Ability {
 				{
 					if(enemyFighters[i] != null && enemyFighters[i].getLiving())
 					{
-						enemyFighters[i].getHit(fighter.getAttack()*5);
+						enemyFighters[i].getHit(fighter.getAttack());
 						hasHit = true;
 					}
 				}
@@ -69,7 +69,7 @@ public class Ability {
 	}
 	public static Ability kick(Fighter f) 
 	{
-		return new Ability("Kick","kicks the opposing front line", f,0, new AbilityEffect(){
+		return new Ability("Kick","kicks the opposing front line for double your attack", f,20, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -82,7 +82,7 @@ public class Ability {
 				{
 					if(enemyFighters[i] != null)
 					{
-						enemyFighters[i].getHit(fighter.getAttack()*5);
+						enemyFighters[i].getHit(fighter.getAttack()*2);
 						hasHit = true;
 					}
 				}

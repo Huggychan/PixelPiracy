@@ -42,7 +42,7 @@ public class CombatGameState implements GameState
 
 		if(pickingMove)
 		{
-			g.setFont(new Font("Rockwell", parentPanel.getHeight()/20, parentPanel.getHeight()/20));
+			g.setFont(new Font("Rockwell", 32, 32));
 		
 			int widthPer = width/abilityNames.length;
 			for(int i =0; i < abilityNames.length; i++)
@@ -55,7 +55,7 @@ public class CombatGameState implements GameState
 				{
 					g.setColor(Color.BLACK);
 					g.drawString(abilityDescriptions[currentIndex], 0, parentPanel.getHeight() - g.getFontMetrics().getHeight()-30);
-					g.drawString(manaCosts[currentIndex], 0, parentPanel.getHeight() - g.getFontMetrics().getHeight() +30);
+					g.drawString("Mana Cost:" +manaCosts[currentIndex], 0, parentPanel.getHeight() - g.getFontMetrics().getHeight() +30);
 				}
 				g.drawString(abilityNames[i], width + (i * widthPer), parentPanel.getHeight() - g.getFontMetrics().getHeight());
 
@@ -186,13 +186,12 @@ public class CombatGameState implements GameState
 	}
 	private void displayVictory() 
 	{
-		parent.remove(enemy);
-		parent.player.transferItems(enemy);
-		parent.getGameInstance().setGameState(parent);
+		parent.getGameInstance().setGameState(new CombatVictoryGameState(parent,enemy));
+
 	}
 	private void displayLoss()
 	{
-		System.exit(0);
+		parent.getGameInstance().setGameState(new GameOverScreen(parent.player, parent.gi));
 	}
 	private void getUserInput(Fighter fighter) 
 	{
@@ -229,7 +228,7 @@ public class CombatGameState implements GameState
 	@Override
 	public void setLt(boolean b) 
 	{
-		if(b)
+		if(b && pickingMove)
 		{
 			if(currentIndex > 0)
 			{
@@ -245,8 +244,9 @@ public class CombatGameState implements GameState
 	@Override
 	public void setRt(boolean b) 
 	{
-		if(b)
+		if(b && pickingMove)
 		{
+			
 			if(currentIndex < abilityNames.length-1)
 			{
 			currentIndex++;
@@ -265,16 +265,33 @@ public class CombatGameState implements GameState
 		{
 			if(activeFighter.getMana() > activeFighter.getAbilities()[currentIndex].getManaCost())
 			{
-				activeFighter.lowerMana(activeFighter.getAbilities()[currentIndex].getManaCost());
+			activeFighter.lowerMana(activeFighter.getAbilities()[currentIndex].getManaCost());
 			activeFighter.getAbilities()[currentIndex].use(fighters, enemyFighters);
 			pickingMove = false;
 			abilityNames = new String[]{""};
 			activeFighter.justMoved();
+			activeFighter.restoreMana(5);
+
 			activeFighter = null;
 			currentIndex = 0;
 			
 			}
 		}
 	}
+	@Override
+	public void setEscape(boolean b)
+	{
+		if(b && pickingMove)
+		{
 
+			pickingMove = false;
+			abilityNames = new String[]{""};
+			activeFighter.justMoved();
+			activeFighter.restoreMana(20);
+			activeFighter.heal(10);
+			
+			activeFighter = null;
+			currentIndex = 0;
+		}
+	}
 }

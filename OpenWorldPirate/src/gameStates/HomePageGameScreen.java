@@ -111,9 +111,10 @@ public class HomePageGameScreen implements GameState
 			switch(selectedOption)
 			{
 			case 0:
-			gi.setGameState(new OpenSeasGameState(gi));
+				gi.setGameState(new CharacterCreationGameState(gi));
 			break;
 			case 1:
+				gi.setGameState(new OpenSeasGameState(gi));
 				break;
 			case 2:
 				break;

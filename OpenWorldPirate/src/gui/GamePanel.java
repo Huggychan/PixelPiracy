@@ -29,4 +29,5 @@ public void paint(Graphics g)
 {
 	gi.getCurrentGameState().draw(g, this);
 }
+
 }

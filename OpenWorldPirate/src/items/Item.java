@@ -34,4 +34,7 @@ public class Item
 			holder.removeItem(this);
 		}
 	}
+	public String getName() {
+		return "PlaceHolderName";
+	}
 }

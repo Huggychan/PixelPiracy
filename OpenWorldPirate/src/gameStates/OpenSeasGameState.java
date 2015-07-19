@@ -29,21 +29,21 @@ public class OpenSeasGameState implements GameState
 	GameInstance gi;
 	public OpenSeasGameState(GameInstance gi)
 	{
-		this.player = new Player(100,100, this);
+		this.player = new Player(100,100, this,15,15,15,15, 4);
 		
 		world = WorldGenerator.createWorld();
 		this.gi = gi;
 		this.entities = WorldGenerator.createEntities(world,this);
 		//entities.add(new Crew(300,300,this));
 	}
-	public OpenSeasGameState(GameInstance gi, Player player)
+	public OpenSeasGameState(GameInstance gi, int health, int attack, int speed, int magic, int crewMembers)
 	{
-		this.player = player;
+		this.player = new Player(100, 100, this, health, attack, speed, magic, crewMembers);
 		
 		world = WorldGenerator.createWorld();
 		this.gi = gi;
 		this.entities = WorldGenerator.createEntities(world,this);
-		//entities.add(new Crew(300,300,this));
+			//entities.add(new Crew(300,300,this));
 	}
 	public GameInstance getGameInstance()
 	{
@@ -192,4 +192,9 @@ public class OpenSeasGameState implements GameState
 		this.setLt(false);
 		this.setRt(false);
 	}
+	public Player getPlayer() 
+	{
+		return player;
+	}
+
 }

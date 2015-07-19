@@ -18,15 +18,19 @@ import worldStructure.Square;
 public class Crew extends FightingEntity
 {
 int energy, maxEnergy;
-int booty;
-public Crew(int x, int y, OpenSeasGameState ops, boolean compControlled)
+
+public Crew(int x, int y, OpenSeasGameState ops,boolean compControlled)
 {
-	super(x, y, ImageManager.getImage(ImageManager.BOAT), ops, 64 ,64, compControlled);
-	//Image img, int width, int height, int health, int attack, int speed, int def, int hpGrowth, int atkGrowth, int spdGrowth, int dfGrowth
-	//this.addFighter(FighterSpawner.captain());
+	super(x,y,ImageManager.getImage(ImageManager.BOAT),ops,64,64,compControlled);
 	booty = 100;
 	energy = maxEnergy = 100;
-	items.add(ItemGenerator.Random(this));
+	if(compControlled)
+	{
+		this.defaultCrew();
+	}
+}
+private void defaultCrew()
+{
 	Random r = new Random();
 	int t = r.nextInt(4)+1;
 	for(int i =0; i < t; i++)
@@ -37,6 +41,7 @@ public Crew(int x, int y, OpenSeasGameState ops, boolean compControlled)
 	this.dn = r.nextBoolean();
 	this.lt = r.nextBoolean();
 	this.rt = r.nextBoolean();
+	items.add(ItemGenerator.Random(this));
 }
 
 @Override

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public abstract class FightingEntity extends Entity 
 {
 	protected Fighter[] fighters;
+	int booty = 0;
 	public FightingEntity(int x, int y, Image img, OpenSeasGameState parent,
 			int width, int height, boolean compControlled) {
 		super(x, y, img, parent, width, height, compControlled);
@@ -32,6 +33,10 @@ public abstract class FightingEntity extends Entity
 	public Fighter[] getFighters()
 	{
 		return fighters;
+	}
+	public int getBooty() 
+	{
+		return booty;
 	}
 
 }

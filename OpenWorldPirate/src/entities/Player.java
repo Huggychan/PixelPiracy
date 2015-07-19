@@ -21,7 +21,7 @@ public class Player extends Crew
 	int food, maxFood;
 	Image coin, foodImg, energyImg;
 	
-	public Player(int x, int y, OpenSeasGameState ops) 
+	public Player(int x, int y, OpenSeasGameState ops, int health, int attack, int speed, int magic, int crewMembers) 
 	{
 		super(x, y, ops
 				,false);
@@ -30,8 +30,12 @@ public class Player extends Crew
 		
 		foodImg = ImageManager.getImage(ImageManager.FOOD);
 		energyImg = ImageManager.getImage(ImageManager.ENERGY);
-
-		this.addFighter(FighterSpawner.captain());
+		
+		this.addFighter(FighterSpawner.captain(health,attack,speed,magic));
+		for(int i =0; i < crewMembers; i++)
+		{
+			this.addFighter(FighterSpawner.pirate(r));
+		}
 
 
 	}
@@ -71,7 +75,10 @@ public class Player extends Crew
 			this.parent.getGameInstance().setGameState(new GameOverScreen(this, this.parent.getGameInstance()));
 		}
 	}
-
+	public int getBooty()
+	{
+		return booty;
+	}
 public void drawUI(Graphics g, int width, int height) 
 {
 	g.setColor(new Color(0,0,0,80));
@@ -127,5 +134,17 @@ public void transferItems(FightingEntity enemy)
 	items.add(enemy.getItems().get(i));
 	enemy.getItems().remove(i);
 	}
+}
+public void addBooty(int num) 
+{
+booty+=num;	
+}
+public void addItem(Item item) 
+{
+	items.add(item);
+}
+public void removeMoney(int i) 
+{
+this.booty-=i;
 }
 }

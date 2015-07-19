@@ -5,6 +5,7 @@ import java.util.Random;
 
 import entities.Crew;
 import entities.Entity;
+import entities.Town;
 import entities.TreasureChest;
 import gameStates.OpenSeasGameState;
 import worldStructure.BlankIslandSquare;
@@ -49,8 +50,9 @@ public class WorldGenerator
 			{
 			enemies.add(temp);
 			}
+	
 		}
-		
+		enemies.add(new Town(10, 10, ops, false));
 		return enemies;
 	}
 

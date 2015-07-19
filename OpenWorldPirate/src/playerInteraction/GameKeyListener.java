@@ -65,7 +65,9 @@ public class GameKeyListener implements KeyListener
 		case KeyEvent.VK_9:
 			gi.getCurrentGameState().setNumber(8, true);
 			break;
-			
+		case KeyEvent.VK_TAB:
+			gi.getCurrentGameState().setTab(true);
+			break;
 		}
 	}
 	@Override
@@ -93,6 +95,9 @@ public class GameKeyListener implements KeyListener
 			break;
 		case KeyEvent.VK_ESCAPE:
 			gi.getCurrentGameState().setEscape(false);
+			break;
+		case KeyEvent.VK_TAB:
+			gi.getCurrentGameState().setTab(false);
 			break;
 		}
 	}
