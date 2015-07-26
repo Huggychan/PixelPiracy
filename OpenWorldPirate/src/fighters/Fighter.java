@@ -12,7 +12,7 @@ import graphics.ImageManager;
 public class Fighter 
 {
 Image img;
-int width, height;
+protected int width = 10, height = 10;
 int currentHealth, attack, speed, defense;
 String name;
 int maxHealth;
@@ -22,29 +22,26 @@ int level;
 double ticks = 0;
 int magicPower, magicPowerGrowth;
 Ability[] abilities;
-int hpGrowth, atkGrowth, spdGrowth, dfGrowth;
+int growthFactor;
 int experience;
 int threshHoldXp = 10;
+int availiblePoints = 0;
 ArrayList<Status> statuses;
 boolean ready = false;
 boolean living = true;
-public Fighter(Image img, String name, int width, int height, int health, int attack, int speed,int magicPower, int hpGrowth, int atkGrowth, int spdGrowth,int magicPowerGrowth)
+public Fighter(Image img, String name, int health, int attack, int magic, int speed,int growth)
 {
-	this.name = name;
+this.name = name;
 this.statuses =  new ArrayList<Status>();
 this.img = img;
-this.width = width;
-this.height = height;
 this.maxHealth = health;
 this.currentHealth = health;
 this.attack = attack;
 this.speed = speed;
-this.hpGrowth = hpGrowth;
-this.atkGrowth = atkGrowth;
-this.spdGrowth = spdGrowth;
+this.magicPower = magic;
+this.growthFactor = growth;
 this.abilities = new Ability[5];
-this.magicPower = magicPower;
-this.magicPowerGrowth = magicPowerGrowth;
+
 experience = 0;
 level = 1;
 }
@@ -56,7 +53,7 @@ public void reset()
 {
 	currentHealth = maxHealth;
 	currentMana = maxMana;
-	ticks = 1000;
+	ticks = 300;
 }
 public void draw(Graphics g, int availibleSpace, int availibleHeight, int x, boolean right)
 {
@@ -78,7 +75,7 @@ public void draw(Graphics g, int availibleSpace, int availibleHeight, int x, boo
 	//TODO write in an hp bar and maybe energy bar? something like that.
 	g.setColor(Color.GREEN);
 	g.drawArc(x, availibleHeight- heightToUse - arcDimension, arcDimension, arcDimension, 0, 360);
-	double percentDone = ticks/1000;
+	double percentDone = ticks/300;
 	g.fillArc(x,  availibleHeight-	heightToUse - arcDimension, arcDimension, arcDimension, 0, (int)(360 * percentDone));
 	
 	g.setColor(Color.RED);
@@ -118,7 +115,7 @@ public void tick()
 	{
 	statuses.get(i).trigger();
 	}
-	if(ticks >= 1000)
+	if(ticks >= 300)
 	{
 		ready = true;
 	}
@@ -145,10 +142,7 @@ public void addExp(int xp)
 
 private void levelUp()
 {
-	maxHealth += hpGrowth;
-	attack += atkGrowth;
-	speed+=spdGrowth;
-	defense+=dfGrowth;
+	availiblePoints +=growthFactor;
 	int tempXp = experience - threshHoldXp;
 	experience = 0;
 	level++;
@@ -229,5 +223,28 @@ public void restoreMana(int i)
 	{
 	this.currentMana+=i;
 	}
+}
+public int getSpeed() {
+	return speed;
+}
+public int getAvailiblePoints()
+{
+	return availiblePoints;
+}
+public void levelHealth() {
+maxHealth++;	
+}
+public void levelAttack() {
+attack++;	
+}
+public void levelSpeed() {
+speed++;	
+}
+public void levelMagic() {
+magicPower++;	
+}
+public void usePoint() 
+{
+availiblePoints--;
 }
 }

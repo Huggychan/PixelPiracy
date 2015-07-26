@@ -8,7 +8,7 @@ import java.awt.Graphics;
 public class PauseScreenState implements GameState
 {
 	OpenSeasGameState gs;
-	String[] options = new String[]{"Resume", "Arrange Team", "Exit"};
+	String[] options = new String[]{"Resume", "Arrange Team","Manage Team", "Exit"};
 	int currentOption = 0;
 	public PauseScreenState(OpenSeasGameState gs)
 	{
@@ -18,7 +18,7 @@ public class PauseScreenState implements GameState
 	public void draw(Graphics g, GamePanel parent) 
 	{
 		gs.draw(g, parent);
-		g.setColor(new Color(255,255,255,95));
+		g.setColor(new Color(255,255,255));
 		g.fillRect(parent.getWidth()/4, parent.getHeight()/4, parent.getWidth()/2, parent.getHeight()/2);
 		for(int i = 0; i < options.length; i++)
 		{
@@ -30,7 +30,7 @@ public class PauseScreenState implements GameState
 			{
 				g.setColor(Color.RED);
 			}
-			g.drawString(options[i],parent.getWidth()*4/9, parent.getHeight()/3 + parent.getHeight()/10 + parent.getHeight()*i/9);
+			g.drawString(options[i],parent.getWidth()*4/9, parent.getHeight()/3 + parent.getHeight()*i/9);
 		}
 	}
 
@@ -96,9 +96,13 @@ public class PauseScreenState implements GameState
 		}
 		if(currentOption == 1)
 		{
-			gs.getGameInstance().setGameState(new TeamManageMentGameState(gs));
+			gs.getGameInstance().setGameState(new TeamArrangingGameState(gs));
 		}
-		if(currentOption ==2)
+		if(currentOption == 2)
+		{
+			gs.getGameInstance().setGameState(new TeamManagingGameState(gs));
+		}
+		if(currentOption ==3)
 		{
 			System.exit(0);
 		}

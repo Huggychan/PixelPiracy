@@ -36,7 +36,7 @@ public class ImageManager {
 		images[2] =  (new ImageIcon(this.getClass().getResource("/coin.png"))).getImage();
 		images[3] =  (new ImageIcon(this.getClass().getResource("/food.png"))).getImage();
 		images[4] =  (new ImageIcon(this.getClass().getResource("/energy.png"))).getImage();
-		images[5] = (new ImageIcon(this.getClass().getResource("/captain.gif"))).getImage();
+		images[5] = (new ImageIcon(this.getClass().getResource("/Captain.png"))).getImage();
 		images[6] = (new ImageIcon(this.getClass().getResource("/backgroundPic.png"))).getImage();
 		images[7] =  (new ImageIcon(this.getClass().getResource("/Pirate1.png"))).getImage();
 		images[8] =  (new ImageIcon(this.getClass().getResource("/book.png"))).getImage();

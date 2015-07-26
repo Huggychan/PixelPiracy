@@ -26,6 +26,7 @@ public class Ability {
 	{
 		abilityEffect.use(self, enemyFighters, parent);
 	}
+	
 	public static Ability heal(Fighter f)
 	{
 		Ability heal = new Ability("Heal", "Heals the team by your magic power", f,20, new AbilityEffect(){
@@ -82,7 +83,7 @@ public class Ability {
 				{
 					if(enemyFighters[i] != null)
 					{
-						enemyFighters[i].getHit(fighter.getAttack()*2);
+						enemyFighters[i].getHit(fighter.getAttack()+2);
 						hasHit = true;
 					}
 				}
@@ -110,7 +111,7 @@ public class Ability {
 				{
 					if(enemyFighters[i] !=null)
 					{
-						enemyFighters[i].getHit(fighter.getMagicPower()*3);
+						enemyFighters[i].getHit(fighter.getMagicPower());
 					}
 				}
 			}});

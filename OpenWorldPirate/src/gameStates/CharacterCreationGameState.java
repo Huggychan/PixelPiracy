@@ -1,6 +1,5 @@
 package gameStates;
 
-import entities.Player;
 import fighters.FighterSpawner;
 import gui.GameInstance;
 import gui.GamePanel;
@@ -8,21 +7,20 @@ import gui.GamePanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 
 public class CharacterCreationGameState implements GameState 
 {
 	// int health, int attack,
 //	int speed, int def, int hpGrowth, int atkGrowth, int spdGrowth,
 //	int dfGrowth)
-	int health = 15, attack = 15,speed = 15,magic = 15,crewMembers = 1;
+	int health = 10, attack = 1,speed = 1,magic = 1,crewMembers = 1;
 	String[] options = new String[]{"Health < " + String.valueOf(health) + " >"
 			,"Attack < " + String.valueOf(attack) + " >"
 			,"Speed < " + String.valueOf(speed) + " >"
 			,"Magic < " + String.valueOf(magic) + " >"
 			,"Crew Members < " + String.valueOf(crewMembers) + " >"
 			,"Start"};
-	int remainingSkillPoints = 30;
+	int remainingSkillPoints = 2;
 	int currentIndex = 0;
 	GameInstance gi;
 	public CharacterCreationGameState(GameInstance gi)
@@ -45,7 +43,6 @@ public class CharacterCreationGameState implements GameState
 			{
 				g.setColor(Color.BLACK);
 			}
-		
 			g.drawString(options[i], parent.getWidth()*3/5, parent.getHeight()*(1+i)/(options.length+1));
 		}
 	}
@@ -81,13 +78,14 @@ public class CharacterCreationGameState implements GameState
 			break;
 
 			case 4: 
-			if(remainingSkillPoints > 9)
+			if(remainingSkillPoints > 0)
+			{
+			if(crewMembers< 4)
 			{
 			pointUsed = true;
 			crewMembers++;
-
+			}
 			options[4] = "Crew Members < " + String.valueOf(crewMembers) + " >";
-			remainingSkillPoints-=9;
 			}
 			break;
 			}
@@ -110,28 +108,28 @@ public class CharacterCreationGameState implements GameState
 			switch(currentIndex)
 			{
 			case 0: 
-				if(health > 15)
+				if(health > 10)
 					{
 					pointUsed = true;
 					health--;
 				options[0] = "Health < " + String.valueOf(health) + " >";
 					}
 			break;
-			case 1: if(attack > 15)
+			case 1: if(attack > 1)
 				{
 				pointUsed = true;
 				attack--;
 			options[1] = "Attack < " + String.valueOf(attack) + " >";
 				}
 			break;
-			case 2: if(speed > 15)
+			case 2: if(speed > 1)
 				{
 				pointUsed = true;
 				speed--;
 			options[2] = "Speed < " + String.valueOf(speed) + " >";
 				}
 			break;
-			case 3:if(magic > 15) 
+			case 3:if(magic > 1) 
 			{
 				pointUsed = true;
 			magic--;
@@ -144,7 +142,6 @@ public class CharacterCreationGameState implements GameState
 			pointUsed = true;
 			crewMembers--;
 			options[4] = "Crew Members < " + String.valueOf(crewMembers) + " >";
-			remainingSkillPoints+=9;
 			}
 			break;
 			}

@@ -1,6 +1,5 @@
 package Launcher;
 
-import entities.Crew;
 import playerInteraction.GameKeyListener;
 import graphics.FontManager;
 import graphics.ImageManager;

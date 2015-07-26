@@ -18,7 +18,6 @@ public class CombatGameState implements GameState
 	OpenSeasGameState parent;
 	Fighter[] fighters;
 	Fighter[] enemyFighters;
-	int tickCount = 0;
 	boolean pickingMove = false;
 	String[] abilityNames = new String[]{""};
 	String[] abilityDescriptions= new String[]{""};;
@@ -101,9 +100,6 @@ public class CombatGameState implements GameState
 	{
 		if(!pickingMove)
 		{
-		tickCount++;
-		if(tickCount > 3)
-		{
 		for(int i = 0; i < fighters.length; i++)
 		{
 			if(fighters[i] !=null)
@@ -142,9 +138,6 @@ public class CombatGameState implements GameState
 				}
 				}
 			}
-			
-		}
-		tickCount = 0;
 		checkForWinner();
 		}
 		}

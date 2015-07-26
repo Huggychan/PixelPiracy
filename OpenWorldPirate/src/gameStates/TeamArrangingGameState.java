@@ -8,7 +8,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public class TeamManageMentGameState implements GameState {
+public class TeamArrangingGameState implements GameState {
 	OpenSeasGameState os;
 	Fighter selectedFighter;
 	boolean holdingFighter = false;
@@ -16,7 +16,7 @@ public class TeamManageMentGameState implements GameState {
 	int currentIndex = 0;
 	int count = 0;
 	int parentIndex;
-	public TeamManageMentGameState(OpenSeasGameState os)
+	public TeamArrangingGameState(OpenSeasGameState os)
 	{
 		this.os=os;
 		this.fighters = os.player.getFighters();

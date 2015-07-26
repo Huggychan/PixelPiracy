@@ -27,7 +27,7 @@ public class CombatVictoryGameState implements GameState {
 	@Override
 	public void draw(Graphics g, GamePanel parent) 
 	{
-		g.drawString("Booty won: " + String.valueOf(enemy.getBooty()), 0, 0);
+		g.drawString("Booty won: " + String.valueOf(enemy.getBooty()), parent.getWidth()/2 - g.getFontMetrics().stringWidth("Booty won: " + String.valueOf(enemy.getBooty()))/2, g.getFontMetrics().getHeight());
 		int widthPer = parent.getWidth()/items.size();
 		int maxHeightPer = parent.getHeight()/10;
 		if(widthPer > maxHeightPer)
@@ -63,7 +63,19 @@ public class CombatVictoryGameState implements GameState {
 			}
 		}
 	}
-
+	public void setEnter(boolean b)
+	{
+		if(b)
+		{
+			os.getPlayer().addItem(items.get(currentIndex));
+			items.remove(currentIndex);
+			currentIndex = 0;
+			if(items.size()==0)
+			{
+				setEscape(true);
+			}
+		}
+	}
 	@Override
 	public void setRt(boolean b) 
 	{
@@ -77,6 +89,15 @@ public class CombatVictoryGameState implements GameState {
 			{
 				currentIndex = 0;
 			}
+		}
+	}
+	
+	@Override
+	public void setEscape(boolean b)
+	{
+		if(b)
+		{
+			os.getGameInstance().setGameState(os);
 		}
 	}
 	@Override

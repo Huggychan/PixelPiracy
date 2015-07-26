@@ -2,6 +2,7 @@ package fighters;
 
 import java.util.Random;
 
+import worldGeneration.NameGenerator;
 import graphics.ImageManager;
 import abilities.Ability;
 
@@ -9,14 +10,14 @@ public class FighterSpawner
 {
 	public static Fighter captain(int health, int attack, int speed, int magic)
 	{
-		Fighter captain = new Fighter(ImageManager.getImage(ImageManager.CAPTAIN),"Captain", 10,10,health*10,attack,speed,magic,health, attack/3,speed/3,magic/3);
+		Fighter captain = new Fighter(ImageManager.getImage(ImageManager.CAPTAIN),NameGenerator.captainName(),health,attack,magic, speed,3);
 		captain.learnAbility(Ability.punch(captain));
 		captain.learnAbility(Ability.heal(captain));
 		return captain;
 	}
 
 	public static Fighter pirate(Random r) {
-		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),"Pirate", 10,10,(10*r.nextInt(10))+1,(r.nextInt(10)+1),r.nextInt(10)+1,r.nextInt(10)+1,(r.nextInt(10)+1)/2, (r.nextInt(10)+1)/2,(r.nextInt(10)+1)/2 , (r.nextInt(10)+1)/2);
+		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),NameGenerator.crewMemberName(),10,1,1,1,1);
 		pirate.learnAbility(Ability.punch(pirate));
 		pirate.learnAbility(Ability.kick(pirate));
 		return pirate;
