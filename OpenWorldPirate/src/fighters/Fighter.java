@@ -53,7 +53,7 @@ public void reset()
 {
 	currentHealth = maxHealth;
 	currentMana = maxMana;
-	ticks = 300;
+	ticks = 200;
 }
 public void draw(Graphics g, int availibleSpace, int availibleHeight, int x, boolean right)
 {
@@ -75,7 +75,7 @@ public void draw(Graphics g, int availibleSpace, int availibleHeight, int x, boo
 	//TODO write in an hp bar and maybe energy bar? something like that.
 	g.setColor(Color.GREEN);
 	g.drawArc(x, availibleHeight- heightToUse - arcDimension, arcDimension, arcDimension, 0, 360);
-	double percentDone = ticks/300;
+	double percentDone = ticks/200;
 	g.fillArc(x,  availibleHeight-	heightToUse - arcDimension, arcDimension, arcDimension, 0, (int)(360 * percentDone));
 	
 	g.setColor(Color.RED);
@@ -115,7 +115,7 @@ public void tick()
 	{
 	statuses.get(i).trigger();
 	}
-	if(ticks >= 300)
+	if(ticks >= 200)
 	{
 		ready = true;
 	}
@@ -154,7 +154,7 @@ private void levelUp()
 }
 public double getEnergy()
 {
-	return ticks /(double) 1000;
+	return ticks /(double) 200;
 }
 public Ability[] getAbilities() {
 	return abilities;

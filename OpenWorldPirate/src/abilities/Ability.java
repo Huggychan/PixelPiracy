@@ -122,5 +122,23 @@ public class Ability {
 		return manaCost;
 	}
 
+	public static Ability manaHeal(Fighter pirate) 
+	{
+		return new Ability("Mana Heal","Restores the teams mana", pirate,0, new AbilityEffect(){
+
+			@Override
+			public void use(Fighter[] self, Fighter[] enemyFighters,
+					Fighter fighter) 
+			{
+				for(int i = 0; i < self.length; i++)
+				{
+					if(self[i] !=null)
+					{
+						self[i].restoreMana(fighter.getMagicPower()*10);
+					}
+				}
+			}});
+	}
+
 	
 }

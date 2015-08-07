@@ -1,15 +1,12 @@
 package entities;
 
 import items.Item;
-import items.ItemGenerator;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
-import abilities.Ability;
 import worldStructure.Square;
 import fighters.FighterSpawner;
 import gameStates.GameOverScreen;
@@ -34,7 +31,7 @@ public class Player extends Crew
 		this.addFighter(FighterSpawner.captain(health,attack,speed,magic));
 		for(int i =0; i < crewMembers; i++)
 		{
-			this.addFighter(FighterSpawner.pirate(r));
+			this.addFighter(FighterSpawner.pirate());
 		}
 
 

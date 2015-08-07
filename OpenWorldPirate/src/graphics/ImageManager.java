@@ -28,9 +28,10 @@ public class ImageManager {
 	public static final int GOLDSTASH = 10;
 	public static final int CITY = 11;
 	public static final int SOLDOUT = 12;
+	public static final int PIRATEWIZARD = 13;
 	public void loadUp() 
 	{
-		images = new Image[13];
+		images = new Image[14];
 		images[0] =  (new ImageIcon(this.getClass().getResource("/boat.png"))).getImage();
 		images[1] =  (new ImageIcon(this.getClass().getResource("/homepage.png"))).getImage();
 		images[2] =  (new ImageIcon(this.getClass().getResource("/coin.png"))).getImage();
@@ -44,6 +45,8 @@ public class ImageManager {
 		images[10] =  (new ImageIcon(this.getClass().getResource("/goldstash.jpg"))).getImage();
 		images[11] =  (new ImageIcon(this.getClass().getResource("/town.jpg"))).getImage();
 		images[12] =  (new ImageIcon(this.getClass().getResource("/soldout.png"))).getImage();
+		images[13] =  (new ImageIcon(this.getClass().getResource("/pirateWizard.png"))).getImage();
+
 	}
 	public static Image getImage(int i) 
 	{

@@ -2,15 +2,10 @@ package entities;
 
 import fighters.FighterSpawner;
 import gameStates.CombatGameState;
-import gameStates.GameOverScreen;
 import gameStates.OpenSeasGameState;
 import graphics.ImageManager;
 import items.ItemGenerator;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
 import java.util.Random;
 
 import worldStructure.Square;
@@ -35,7 +30,14 @@ private void defaultCrew()
 	int t = r.nextInt(4)+1;
 	for(int i =0; i < t; i++)
 	{
-		this.addFighter(FighterSpawner.pirate(r));
+		if(r.nextBoolean())
+		{
+			this.addFighter(FighterSpawner.pirateWizard());
+		}
+		else
+		{
+			this.addFighter(FighterSpawner.pirate());
+		}
 	}
 	this.up = r.nextBoolean();
 	this.dn = r.nextBoolean();

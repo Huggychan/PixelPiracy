@@ -1,14 +1,11 @@
 package entities;
 
-import gameStates.CombatGameState;
 import gameStates.OpenSeasGameState;
 import graphics.ImageManager;
-import gui.GameInstance;
 import items.Item;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Random;
 

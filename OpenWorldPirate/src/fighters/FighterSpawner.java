@@ -1,10 +1,9 @@
 package fighters;
 
-import java.util.Random;
-
 import worldGeneration.NameGenerator;
 import graphics.ImageManager;
 import abilities.Ability;
+//1. Health 2. Attack 3. Magic 4. Speed 5. growth
 
 public class FighterSpawner 
 {
@@ -15,11 +14,18 @@ public class FighterSpawner
 		captain.learnAbility(Ability.heal(captain));
 		return captain;
 	}
-
-	public static Fighter pirate(Random r) {
-		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),NameGenerator.crewMemberName(),10,1,1,1,1);
+	public static Fighter pirate() {
+		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),NameGenerator.crewMemberName(),14,2,1,1,1);
 		pirate.learnAbility(Ability.punch(pirate));
 		pirate.learnAbility(Ability.kick(pirate));
+		return pirate;
+	}
+	public static Fighter pirateWizard()
+	{
+		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATEWIZARD), NameGenerator.crewMemberName(), 10, 1, 2, 1, 1);
+		pirate.learnAbility(Ability.TidalWave(pirate));
+		pirate.learnAbility(Ability.heal(pirate));
+		pirate.learnAbility(Ability.manaHeal(pirate));
 		return pirate;
 	}
 }
