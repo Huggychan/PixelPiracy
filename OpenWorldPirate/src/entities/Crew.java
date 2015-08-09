@@ -1,13 +1,14 @@
 package entities;
 
-import fighters.FighterSpawner;
-import gameStates.CombatGameState;
+
 import gameStates.OpenSeasGameState;
 import graphics.ImageManager;
 import items.ItemGenerator;
 
 import java.util.Random;
 
+import combat.CombatGameState;
+import combat.FighterSpawner;
 import worldStructure.Square;
 
 public class Crew extends FightingEntity

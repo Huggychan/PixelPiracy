@@ -1,4 +1,4 @@
-package gameStates;
+package combat;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,8 +7,9 @@ import java.util.Random;
 
 import abilities.Ability;
 import entities.FightingEntity;
-import fighters.Fighter;
+import gameStates.GameOverScreen;
 import gameStates.GameState;
+import gameStates.OpenSeasGameState;
 import gui.GamePanel;
 
 public class CombatGameState implements GameState 
@@ -184,7 +185,7 @@ public class CombatGameState implements GameState
 	}
 	private void displayLoss()
 	{
-		parent.getGameInstance().setGameState(new GameOverScreen(parent.player, parent.gi));
+		parent.getGameInstance().setGameState(new GameOverScreen(parent.getPlayer(), parent.getGameInstance()));
 	}
 	private void getUserInput(Fighter fighter) 
 	{

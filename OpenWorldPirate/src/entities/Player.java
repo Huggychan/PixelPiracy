@@ -1,14 +1,16 @@
 package entities;
 
 import items.Item;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
+import combat.FighterSpawner;
+
 import worldStructure.Square;
-import fighters.FighterSpawner;
 import gameStates.GameOverScreen;
 import gameStates.OpenSeasGameState;
 import graphics.ImageManager;
@@ -33,7 +35,7 @@ public class Player extends Crew
 		{
 			this.addFighter(FighterSpawner.pirate());
 		}
-
+		this.addFighter(FighterSpawner.monkey());
 
 	}
 	public void reset()

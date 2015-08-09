@@ -1,6 +1,7 @@
 package abilities;
 
-import fighters.Fighter;
+import combat.Fighter;
+
 
 public class AbilityTemplate 
 {

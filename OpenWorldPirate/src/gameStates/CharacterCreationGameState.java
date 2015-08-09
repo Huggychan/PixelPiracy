@@ -1,6 +1,5 @@
 package gameStates;
 
-import fighters.FighterSpawner;
 import gui.GameInstance;
 import gui.GamePanel;
 

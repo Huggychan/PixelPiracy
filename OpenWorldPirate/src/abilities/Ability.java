@@ -1,6 +1,9 @@
 package abilities;
 
-import fighters.Fighter;
+import java.util.Random;
+
+import combat.Fighter;
+
 
 public class Ability {
 	private String name;
@@ -81,9 +84,9 @@ public class Ability {
 			{
 				if(!hasHit)
 				{
-					if(enemyFighters[i] != null)
+					if(enemyFighters[i] != null && enemyFighters[i].getLiving())
 					{
-						enemyFighters[i].getHit(fighter.getAttack()+2);
+						enemyFighters[i].getHit(fighter.getAttack()+1);
 						hasHit = true;
 					}
 				}
@@ -137,6 +140,29 @@ public class Ability {
 						self[i].restoreMana(fighter.getMagicPower()*10);
 					}
 				}
+			}});
+	}
+
+	public static Ability bananaToss(Fighter monkey) 
+	{
+		return new Ability("Banana Toss","Randomly Strikes an enemy", monkey,0, new AbilityEffect(){
+
+			@Override
+			public void use(Fighter[] self, Fighter[] enemyFighters,
+					Fighter fighter) 
+			{
+				Random r = new Random();
+				boolean hasHit = false;
+				while(!hasHit)
+				{
+					int temp = r.nextInt(enemyFighters.length);
+					if(enemyFighters[temp] != null && enemyFighters[temp].getLiving())
+					{
+						enemyFighters[temp].getHit(monkey.getAttack()+1);
+						hasHit = true;
+					}
+				}
+				
 			}});
 	}
 

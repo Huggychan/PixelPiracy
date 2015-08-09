@@ -1,11 +1,12 @@
 package gameStates;
 
-import fighters.Fighter;
 import gui.GamePanel;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+
+import combat.Fighter;
 
 public class FighterManagerState implements GameState {
 	

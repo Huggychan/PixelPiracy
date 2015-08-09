@@ -1,6 +1,5 @@
-package combatEffects;
+package combat;
 
-import fighters.Fighter;
 
 public abstract class Status 
 {

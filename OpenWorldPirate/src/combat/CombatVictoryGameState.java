@@ -1,7 +1,9 @@
-package gameStates;
+package combat;
 
 import entities.FightingEntity;
 import entities.Player;
+import gameStates.GameState;
+import gameStates.OpenSeasGameState;
 import gui.GamePanel;
 import items.Item;
 

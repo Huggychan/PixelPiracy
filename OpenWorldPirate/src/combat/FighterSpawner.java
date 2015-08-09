@@ -1,4 +1,4 @@
-package fighters;
+package combat;
 
 import worldGeneration.NameGenerator;
 import graphics.ImageManager;
@@ -12,6 +12,7 @@ public class FighterSpawner
 		Fighter captain = new Fighter(ImageManager.getImage(ImageManager.CAPTAIN),NameGenerator.captainName(),health,attack,magic, speed,3);
 		captain.learnAbility(Ability.punch(captain));
 		captain.learnAbility(Ability.heal(captain));
+		captain.learnAbility(Ability.manaHeal(captain));
 		return captain;
 	}
 	public static Fighter pirate() {
@@ -28,17 +29,11 @@ public class FighterSpawner
 		pirate.learnAbility(Ability.manaHeal(pirate));
 		return pirate;
 	}
+	
+	public static Fighter monkey()
+	{
+		Fighter monkey = new Fighter(ImageManager.getImage(ImageManager.MONKEY), "Monkey", 15,2,0,1,1);
+		monkey.learnAbility(Ability.bananaToss(monkey));
+		return monkey;
+	}
 }
-
-//public class Captain extends Fighter 
-//{
-//	public Captain(int width, int height, int health, int attack,
-//			int speed, int def, int hpGrowth, int atkGrowth, int spdGrowth,
-//			int dfGrowth)
-//	{
-//		super(ImageManager.getImage(ImageManager.CAPTAIN), width, height, health, attack, speed, def, hpGrowth, atkGrowth,
-//				spdGrowth, dfGrowth);
-//		this.abilities = new Ability[]{new Kick(), new Heal()};
-//		
-//	}
-//}

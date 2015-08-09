@@ -1,11 +1,12 @@
 package entities;
 
-import fighters.Fighter;
 import gameStates.OpenSeasGameState;
 import items.Item;
 
 import java.awt.Image;
 import java.util.ArrayList;
+
+import combat.Fighter;
 
 public abstract class FightingEntity extends Entity 
 {

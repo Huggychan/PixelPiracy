@@ -1,11 +1,10 @@
-package fighters;
+package combat;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
-import combatEffects.Status;
 import abilities.Ability;
 import graphics.ImageManager;
 

@@ -1,12 +1,13 @@
 package gameStates;
 
-import fighters.Fighter;
 import gui.GamePanel;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
+import combat.Fighter;
 
 import abilities.Ability;
 
