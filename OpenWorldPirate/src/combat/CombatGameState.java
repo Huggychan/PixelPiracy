@@ -131,6 +131,7 @@ public class CombatGameState implements GameState
 					int f = r.nextInt(enemyFighters[i].getAbilities().length);
 					if(enemyFighters[i].getAbilities()[f] != null)
 					{
+				enemyFighters[i].getAbilities()[f].play(this, parent.getGameInstance(),500, 500);
 				enemyFighters[i].getAbilities()[f].use(enemyFighters, temp);
 				enemyFighters[i].justMoved();
 				enemyFighters[i].tick();
@@ -260,7 +261,17 @@ public class CombatGameState implements GameState
 			if(activeFighter.getMana() > activeFighter.getAbilities()[currentIndex].getManaCost())
 			{
 			activeFighter.lowerMana(activeFighter.getAbilities()[currentIndex].getManaCost());
+			int fightNum = 0	;
+			for(int i = 0; i < fighters.length; i++)
+			{
+				if(activeFighter == fighters[i])
+				{
+					fightNum = i;
+				}
+			}
+			activeFighter.getAbilities()[currentIndex].play(this, parent.getGameInstance(),fightNum, fightNum);
 			activeFighter.getAbilities()[currentIndex].use(fighters, enemyFighters);
+
 			pickingMove = false;
 			abilityNames = new String[]{""};
 			activeFighter.justMoved();

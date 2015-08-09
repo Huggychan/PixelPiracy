@@ -1,5 +1,10 @@
 package abilities;
 
+import gameStates.GameState;
+import graphics.Animation;
+import graphics.AnimationBank;
+import gui.GameInstance;
+
 import java.util.Random;
 
 import combat.Fighter;
@@ -11,28 +16,45 @@ public class Ability {
 	private Fighter parent;
 	private String description;
 	private int manaCost;
-	public Ability(String string, String desc,Fighter fighter,int manaCost, AbilityEffect abilityEffect) 
+	private Animation animation;
+	public Ability(String string, String desc,Fighter fighter,int manaCost,Animation animation,AbilityEffect abilityEffect) 
 	{
 		this.name = string;
 		this.description = desc;
 		this.abilityEffect = abilityEffect;
 		this.parent = fighter;
 		this.manaCost = manaCost;
+		this.animation = animation;
 	}
 
 	public String getName()
 	{
 		return name;
 	}
-
+	public void play(GameState toPlayOver, GameInstance gi, int xOrigin, int yOrigin)
+	{
+		if(animation != null)
+		{
+			animation.play(toPlayOver, gi, xOrigin, yOrigin);
+		}
+	}
 	public void use(Fighter[] self, Fighter[] enemyFighters)
 	{
+
 		abilityEffect.use(self, enemyFighters, parent);
+	}
+	public AbilityTemplate getTemplate()
+	{
+		return new AbilityTemplate(name, description,manaCost,animation, abilityEffect);
+	}
+
+	public String getDescription() {
+		return description;
 	}
 	
 	public static Ability heal(Fighter f)
 	{
-		Ability heal = new Ability("Heal", "Heals the team by your magic power", f,20, new AbilityEffect(){
+		Ability heal = new Ability("Heal", "Heals the team by your magic power", f,20, null,new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters, Fighter fighter) 
@@ -51,7 +73,7 @@ public class Ability {
 
 	public static Ability punch(Fighter f) 
 	{
-		return new Ability("Punch","Punches the opposing front line for your attack", f,0, new AbilityEffect(){
+		return new Ability("Punch","Punches the opposing front line for your attack", f,0,null, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -73,7 +95,7 @@ public class Ability {
 	}
 	public static Ability kick(Fighter f) 
 	{
-		return new Ability("Kick","kicks the opposing front line for double your attack", f,20, new AbilityEffect(){
+		return new Ability("Kick","kicks the opposing front line for double your attack", f,20,null, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -93,18 +115,11 @@ public class Ability {
 			}
 			}});
 	}
-	public AbilityTemplate getTemplate()
-	{
-		return new AbilityTemplate(name, description,manaCost, abilityEffect);
-	}
 
-	public String getDescription() {
-		return description;
-	}
 
 	public static Ability TidalWave(Fighter f) 
 	{
-		return new Ability("Tidal Wave","Powerful AoE attack", f,60, new AbilityEffect(){
+		return new Ability("Tidal Wave","Powerful AoE attack", f,60,null, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -127,7 +142,7 @@ public class Ability {
 
 	public static Ability manaHeal(Fighter pirate) 
 	{
-		return new Ability("Mana Heal","Restores the teams mana", pirate,0, new AbilityEffect(){
+		return new Ability("Mana Heal","Restores the teams mana", pirate,0,null, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,
@@ -145,7 +160,7 @@ public class Ability {
 
 	public static Ability bananaToss(Fighter monkey) 
 	{
-		return new Ability("Banana Toss","Randomly Strikes an enemy", monkey,0, new AbilityEffect(){
+		return new Ability("Banana Toss","Randomly Strikes an enemy", monkey,0,AnimationBank.bananaToss, new AbilityEffect(){
 
 			@Override
 			public void use(Fighter[] self, Fighter[] enemyFighters,

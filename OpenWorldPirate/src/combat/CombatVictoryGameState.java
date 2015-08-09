@@ -65,14 +65,15 @@ public class CombatVictoryGameState implements GameState {
 			}
 		}
 	}
-	public void setEnter(boolean b)
+	@Override
+	public void setSpace(boolean b)
 	{
 		if(b)
 		{
 			os.getPlayer().addItem(items.get(currentIndex));
 			items.remove(currentIndex);
 			currentIndex = 0;
-			if(items.size()==0)
+			if(items.size()<=0)
 			{
 				setEscape(true);
 			}

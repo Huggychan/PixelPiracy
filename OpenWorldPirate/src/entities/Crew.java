@@ -45,6 +45,8 @@ private void defaultCrew()
 	this.lt = r.nextBoolean();
 	this.rt = r.nextBoolean();
 	items.add(ItemGenerator.Random(this));
+	items.add(ItemGenerator.Random(this));
+	items.add(ItemGenerator.Random(this));
 }
 
 @Override

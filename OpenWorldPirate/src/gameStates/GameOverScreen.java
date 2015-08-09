@@ -61,7 +61,7 @@ public class GameOverScreen implements GameState {
 	@Override
 	public void setSpace(boolean b) 
 	{
-		 gi.setGameState(new OpenSeasGameState(gi));
+		 gi.setGameState(new CharacterCreationGameState(gi));
 	}
 
 	@Override
