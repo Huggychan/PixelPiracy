@@ -17,6 +17,12 @@ public class TreasureChest extends Entity
 		this.items.add(ItemGenerator.AbilityScroll(os, Ability.TidalWave(null).getTemplate(), this));
 	}
 
+	public TreasureChest(int i, int j, OpenSeasGameState ops) {
+		super(i,j, ImageManager.getImage(ImageManager.CHEST), ops, 64, 64, true);
+		this.items.add(ItemGenerator.Random(this));
+		this.items.add(ItemGenerator.AbilityScroll(ops, Ability.TidalWave(null).getTemplate(), this));
+	}
+
 	@Override
 	public void triggerInteraction(Entity ent) 
 	{

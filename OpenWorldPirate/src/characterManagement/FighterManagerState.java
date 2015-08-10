@@ -114,18 +114,18 @@ public class FighterManagerState implements GameState {
 			{
 			switch(currentIndex)
 			{
-			case 0: 
+			case 1: 
 				f.levelHealth();
 				pointUsed = true;
 				traits[0] = "Health < " + String.valueOf(f.getMaxHealth()) + " >";
 			break;
-			case 1: f.levelAttack();;
+			case 2: f.levelAttack();;
 			pointUsed = true;
 			break;
-			case 2: f.levelMagic();;
+			case 3: f.levelMagic();;
 			pointUsed = true;
 			break;
-			case 3: f.levelSpeed();;
+			case 4: f.levelSpeed();;
 			pointUsed = true;
 			break;
 			}

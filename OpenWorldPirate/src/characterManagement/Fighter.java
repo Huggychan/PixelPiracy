@@ -25,7 +25,7 @@ int magicPower, magicPowerGrowth;
 Ability[] abilities;
 int growthFactor;
 int experience;
-int threshHoldXp = 10;
+int threshHoldXp = 50;
 int availiblePoints = 0;
 ArrayList<Status> statuses;
 boolean ready = false;
@@ -147,7 +147,7 @@ private void levelUp()
 	int tempXp = experience - threshHoldXp;
 	experience = 0;
 	level++;
-	threshHoldXp = 8*level + 10;
+	threshHoldXp = 50*level + 50;
 	if(tempXp > 0)
 	{
 		addExp(tempXp);

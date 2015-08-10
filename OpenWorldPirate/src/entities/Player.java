@@ -10,6 +10,8 @@ import java.util.ArrayList;
 
 
 
+
+import characterManagement.Fighter;
 import characterManagement.FighterSpawner;
 import worldStructure.Square;
 import gameStates.GameOverScreen;
@@ -34,7 +36,7 @@ public class Player extends Crew
 		this.addFighter(FighterSpawner.captain(health,attack,speed,magic));
 		for(int i =0; i < crewMembers; i++)
 		{
-			this.addFighter(FighterSpawner.pirate());
+			this.addFighter(FighterSpawner.pirate(30));
 		}
 		this.addFighter(FighterSpawner.monkey());
 
@@ -156,5 +158,9 @@ for(int i = 0; i < fighters.length; i++)
 		fighters[i].addExp(exp);
 	}
 }
+}
+public void removeFighter(int i) 
+{
+	fighters[i] = null;
 }
 }

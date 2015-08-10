@@ -42,17 +42,47 @@ public class WorldGenerator
 	{
 		ArrayList<Entity> enemies = new ArrayList<Entity>();
 		Random r = new Random();
-		while(r.nextInt(100) != 0)
+		for(int i = 0; i < world.length; i++)
 		{
-			Crew temp = new Crew(r.nextInt(world.length*64), r.nextInt(world[0].length * 64), ops, true);
-			enemies.add(new TreasureChest(ops));
-			if(world[temp.getX()/64][temp.getY()/64].isPassable())
+			for(int j = 0; j < world[i].length; j++)
 			{
-			enemies.add(temp);
+				switch(r.nextInt(200))
+				{
+				//numbers to add a enemy crew
+				case 0:
+					Crew temp = new Crew(i*64, j*64, ops, true, i+j);
+					if(world[i][j].isPassable())
+					{
+					enemies.add(temp);
+					}
+					break;
+				case 1:
+					Crew tempC = new Crew(i*64, j*64, ops, true, i+j);
+					if(world[i][j].isPassable())
+					{
+					enemies.add(tempC);
+					}
+					break;
+					
+					// add a town
+				case 2:
+					if(world[i][j].isPassable())
+					{
+					enemies.add(new Town(i,j, ops,true));
+					}
+					break;
+					
+					//add a chest
+				case 3:
+					if(world[i][j].isPassable())
+					{
+					enemies.add(new TreasureChest(i*64,j*64,ops));
+					}
+					break;
+
+				}
 			}
-	
 		}
-		enemies.add(new Town(10, 10, ops, false));
 		return enemies;
 	}
 

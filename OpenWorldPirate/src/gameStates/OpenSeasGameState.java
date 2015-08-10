@@ -67,7 +67,13 @@ public class OpenSeasGameState implements GameState
 		
 		for(int i = 0; i < entities.size(); i++)
 		{
+			if(entities.get(i).getX() >= player.getX() - parent.getWidth()/2 && entities.get(i).getX() <=player.getX()+ parent.getWidth()/2)
+			{
+				if(entities.get(i).getY() >= player.getY() - parent.getHeight()/2 && entities.get(i).getY() <=player.getY()+ parent.getHeight()/2)
+				{
 			entities.get(i).draw(tempg,  mapOffsetX  - (player.getX())- player.getWidth()/2, mapOffsetY - (player.getY()) - player.getHeight()/2);
+				}
+			}
 		}
 		Entity.triggerInteractions(player, entities);
 		player.drawUI(tempg, parent.getWidth(), parent.getHeight()/10);
@@ -167,6 +173,7 @@ public class OpenSeasGameState implements GameState
 			if(i < player.getItems().size())
 			{
 			player.getItems().get(i).use(player);
+			player.getItems().remove(i);
 			}
 		}
 	}

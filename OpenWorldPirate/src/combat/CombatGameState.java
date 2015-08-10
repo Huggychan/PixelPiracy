@@ -83,6 +83,10 @@ public class CombatGameState implements GameState
 			{
 			fighters[i].draw(g, availibleSpace, availibleHeight,(i * availibleSpace), true);
 			}
+			else
+			{
+				parent.getPlayer().removeFighter(i);
+			}
 			}
 		}
 		for(int i = 0; i < enemyFighters.length; i++)
@@ -132,11 +136,16 @@ public class CombatGameState implements GameState
 					int f = r.nextInt(enemyFighters[i].getAbilities().length);
 					if(enemyFighters[i].getAbilities()[f] != null)
 					{
+						if(enemyFighters[i].getMana() > enemyFighters[i].getAbilities()[f].getManaCost())
+						{
+							enemyFighters[i].lowerMana(enemyFighters[i].getAbilities()[f].getManaCost());
 				enemyFighters[i].getAbilities()[f].play(this, parent.getGameInstance(),500, 500);
 				enemyFighters[i].getAbilities()[f].use(enemyFighters, temp);
 				enemyFighters[i].justMoved();
 				enemyFighters[i].tick();
 				hasMoved = true;
+						}
+						enemyFighters[i].restoreMana(1);
 					}
 				}
 				}

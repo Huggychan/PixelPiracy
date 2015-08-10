@@ -15,15 +15,15 @@ public class FighterSpawner
 		captain.learnAbility(Ability.manaHeal(captain));
 		return captain;
 	}
-	public static Fighter pirate() {
-		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),NameGenerator.crewMemberName(),14,2,1,1,1);
+	public static Fighter pirate(int str) {
+		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATE1),NameGenerator.crewMemberName(),str,str/20 + 1,str/20 + 1,str/20 + 1,1);
 		pirate.learnAbility(Ability.punch(pirate));
 		pirate.learnAbility(Ability.kick(pirate));
 		return pirate;
 	}
-	public static Fighter pirateWizard()
+	public static Fighter pirateWizard(int str)
 	{
-		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATEWIZARD), NameGenerator.crewMemberName(), 10, 1, 2, 1, 1);
+		Fighter pirate = new Fighter(ImageManager.getImage(ImageManager.PIRATEWIZARD), NameGenerator.crewMemberName(), str/2, str/20+1, str/10 + 1, str/20+1, 1);
 		pirate.learnAbility(Ability.TidalWave(pirate));
 		pirate.learnAbility(Ability.heal(pirate));
 		pirate.learnAbility(Ability.manaHeal(pirate));

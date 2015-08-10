@@ -32,13 +32,32 @@ public class CombatVictoryGameState implements GameState {
 		os.getPlayer().getExp(exp);
 		this.enemy = enemy;
 		os.remove(enemy);
+		for(int i = 0; i < os.getPlayer().getFighters().length; i++)
+		{
+			if(os.getPlayer().getFighters()[i] == null)
+			{
+				for(int j = i; j < os.getPlayer().getFighters().length; j++)
+				{
+					if(os.getPlayer().getFighters()[j] != null)
+					{
+						os.getPlayer().getFighters()[i] = os.getPlayer().getFighters()[j];
+						os.getPlayer().getFighters()[j] = null;
+						j = 100;
+					}
+				}
+			}
+		}
 	}
 
 	@Override
 	public void draw(Graphics g, GamePanel parent) 
 	{
 		g.drawString("Booty won: " + String.valueOf(enemy.getBooty()), parent.getWidth()/2 - g.getFontMetrics().stringWidth("Booty won: " + String.valueOf(enemy.getBooty()))/2, g.getFontMetrics().getHeight());
-		int widthPer = parent.getWidth()/items.size();
+		int widthPer = 1;
+		if(items.size() > 0)
+		{
+		widthPer = parent.getWidth()/items.size();
+		}
 		int maxHeightPer = parent.getHeight()/10;
 		if(widthPer > maxHeightPer)
 		{
