@@ -5,6 +5,9 @@ import gui.GamePanel;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import characterManagement.TeamArrangingGameState;
+import characterManagement.TeamManagingGameState;
+
 public class PauseScreenState implements GameState
 {
 	OpenSeasGameState gs;

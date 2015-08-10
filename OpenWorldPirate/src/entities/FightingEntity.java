@@ -6,7 +6,8 @@ import items.Item;
 import java.awt.Image;
 import java.util.ArrayList;
 
-import combat.Fighter;
+import characterManagement.Fighter;
+
 
 public abstract class FightingEntity extends Entity 
 {

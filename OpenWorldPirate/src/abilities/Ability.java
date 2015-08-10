@@ -7,7 +7,8 @@ import gui.GameInstance;
 
 import java.util.Random;
 
-import combat.Fighter;
+import characterManagement.Fighter;
+
 
 
 public class Ability {

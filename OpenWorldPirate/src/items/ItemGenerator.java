@@ -2,13 +2,12 @@ package items;
 
 import entities.Entity;
 import entities.FightingEntity;
-import gameStates.AbilityLearningGameState;
 import gameStates.OpenSeasGameState;
 import graphics.ImageManager;
 
 import java.util.Random;
 
-import abilities.Ability;
+import characterManagement.AbilityLearningGameState;
 import abilities.AbilityTemplate;
 
 public class ItemGenerator 

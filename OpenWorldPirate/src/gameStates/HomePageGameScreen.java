@@ -1,6 +1,5 @@
 package gameStates;
 
-import entities.Crew;
 import graphics.FontManager;
 import graphics.ImageManager;
 import gui.GameInstance;
@@ -8,10 +7,9 @@ import gui.GamePanel;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.IOException;
+import characterManagement.CharacterCreationGameState;
 
 public class HomePageGameScreen implements GameState 
 {

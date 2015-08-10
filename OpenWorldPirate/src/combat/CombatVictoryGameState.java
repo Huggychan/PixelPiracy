@@ -1,7 +1,6 @@
 package combat;
 
 import entities.FightingEntity;
-import entities.Player;
 import gameStates.GameState;
 import gameStates.OpenSeasGameState;
 import gui.GamePanel;
@@ -22,6 +21,15 @@ public class CombatVictoryGameState implements GameState {
 		this.os = os;
 		items = enemy.getItems();
 		os.getPlayer().addBooty(enemy.getBooty());
+		int exp = 0;
+		for(int i = 0; i < enemy.getFighters().length; i++)
+		{
+			if(enemy.getFighters()[i] !=null)
+			{
+			exp+= enemy.getFighters()[i].getExpWorth();
+			}
+		}
+		os.getPlayer().getExp(exp);
 		this.enemy = enemy;
 		os.remove(enemy);
 	}

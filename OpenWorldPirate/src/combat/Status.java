@@ -1,5 +1,7 @@
 package combat;
 
+import characterManagement.Fighter;
+
 
 public abstract class Status 
 {

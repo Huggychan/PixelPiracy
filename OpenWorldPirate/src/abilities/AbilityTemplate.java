@@ -1,7 +1,7 @@
 package abilities;
 
+import characterManagement.Fighter;
 import graphics.Animation;
-import combat.Fighter;
 
 
 public class AbilityTemplate 

@@ -1,5 +1,7 @@
-package gameStates;
+package characterManagement;
 
+import gameStates.GameState;
+import gameStates.OpenSeasGameState;
 import gui.GameInstance;
 import gui.GamePanel;
 

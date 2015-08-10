@@ -1,6 +1,6 @@
 package abilities;
 
-import combat.Fighter;
+import characterManagement.Fighter;
 
 
 public interface AbilityEffect 

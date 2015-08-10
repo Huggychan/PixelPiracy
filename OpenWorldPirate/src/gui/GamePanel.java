@@ -3,13 +3,14 @@ package gui;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
 import gui.GameInstance;
-import entities.Crew;
 
 public class GamePanel extends Component
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8463432215107864298L;
 	GameInstance gi;
 	public int width, height, xSpare, ySpare;
 	Dimension screenDims;

@@ -8,8 +8,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
-import combat.FighterSpawner;
 
+
+import characterManagement.FighterSpawner;
 import worldStructure.Square;
 import gameStates.GameOverScreen;
 import gameStates.OpenSeasGameState;
@@ -145,5 +146,15 @@ public void addItem(Item item)
 public void removeMoney(int i) 
 {
 this.booty-=i;
+}
+public void getExp(int exp) 
+{
+for(int i = 0; i < fighters.length; i++)
+{
+	if(fighters[i] !=null)
+	{
+		fighters[i].addExp(exp);
+	}
+}
 }
 }

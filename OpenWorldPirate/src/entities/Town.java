@@ -6,15 +6,10 @@ import graphics.ImageManager;
 import items.Item;
 import items.ItemGenerator;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.util.Random;
-
 import abilities.Ability;
 import worldStructure.Square;
 
 public class Town extends Entity {
-	private static Random r = new Random();
 	Item[] items;
 	int[] prices; 
 	public Town(int x, int y, OpenSeasGameState parent, boolean compControlled) 

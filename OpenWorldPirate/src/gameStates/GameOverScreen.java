@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import characterManagement.CharacterCreationGameState;
+
 public class GameOverScreen implements GameState {
 	
 	Crew toBeDisplayed;

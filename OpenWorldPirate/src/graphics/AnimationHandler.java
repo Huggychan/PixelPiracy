@@ -9,7 +9,7 @@ import gui.GamePanel;
 public interface AnimationHandler extends GameState
 {
 	public void play(GameState toPlayOver, GameInstance gi, int xOrigin, int yOrigin);
-
+	
 	@Override
 	public void draw(Graphics g, GamePanel parent);
 

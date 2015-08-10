@@ -1,13 +1,13 @@
-package gameStates;
+package characterManagement;
 
+import gameStates.GameState;
+import gameStates.OpenSeasGameState;
 import gui.GamePanel;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-
-import combat.Fighter;
 
 import abilities.Ability;
 

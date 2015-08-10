@@ -1,4 +1,4 @@
-package combat;
+package characterManagement;
 
 import worldGeneration.NameGenerator;
 import graphics.ImageManager;
@@ -9,7 +9,7 @@ public class FighterSpawner
 {
 	public static Fighter captain(int health, int attack, int speed, int magic)
 	{
-		Fighter captain = new Fighter(ImageManager.getImage(ImageManager.CAPTAIN),NameGenerator.captainName(),health,attack,magic, speed,3);
+		Fighter captain = new Fighter(ImageManager.getImage(ImageManager.CAPTAIN),NameGenerator.captainName(),health,attack,magic, speed,2);
 		captain.learnAbility(Ability.punch(captain));
 		captain.learnAbility(Ability.heal(captain));
 		captain.learnAbility(Ability.manaHeal(captain));

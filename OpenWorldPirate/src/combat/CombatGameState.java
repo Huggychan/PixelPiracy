@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.util.Random;
 
+import characterManagement.Fighter;
 import abilities.Ability;
 import entities.FightingEntity;
 import gameStates.GameOverScreen;
@@ -269,17 +270,16 @@ public class CombatGameState implements GameState
 					fightNum = i;
 				}
 			}
-			activeFighter.getAbilities()[currentIndex].play(this, parent.getGameInstance(),fightNum, fightNum);
-			activeFighter.getAbilities()[currentIndex].use(fighters, enemyFighters);
+				activeFighter.getAbilities()[currentIndex].play(this, parent.getGameInstance(),fightNum, fightNum);
+				activeFighter.getAbilities()[currentIndex].use(fighters, enemyFighters);
+				pickingMove = false;
+				abilityNames = new String[]{""};
+				activeFighter.justMoved();
+				activeFighter.restoreMana(5);
 
-			pickingMove = false;
-			abilityNames = new String[]{""};
-			activeFighter.justMoved();
-			activeFighter.restoreMana(5);
-
-			activeFighter = null;
-			currentIndex = 0;
-			
+				activeFighter = null;
+				currentIndex = 0;
+				
 			}
 		}
 	}

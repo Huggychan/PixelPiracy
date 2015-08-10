@@ -1,20 +1,9 @@
 package gui;
 
-import java.awt.Dimension;
-import java.awt.Toolkit;
-import java.util.ArrayList;
-
-import worldGeneration.WorldGenerator;
-import worldStructure.BlankIslandSquare;
-import worldStructure.BlankOceanSquare;
-import worldStructure.Square;
 import entities.Crew;
-import entities.Entity;
-import gameStates.CharacterCreationGameState;
 import gameStates.GameState;
 import gameStates.HomePageGameScreen;
 import gameStates.OpenSeasGameState;
-import graphics.ImageManager;
 
 public class GameInstance implements Runnable 
 {

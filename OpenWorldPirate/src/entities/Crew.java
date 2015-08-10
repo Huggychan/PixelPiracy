@@ -7,8 +7,8 @@ import items.ItemGenerator;
 
 import java.util.Random;
 
+import characterManagement.FighterSpawner;
 import combat.CombatGameState;
-import combat.FighterSpawner;
 import worldStructure.Square;
 
 public class Crew extends FightingEntity

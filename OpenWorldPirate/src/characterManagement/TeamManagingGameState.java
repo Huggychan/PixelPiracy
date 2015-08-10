@@ -1,5 +1,7 @@
-package gameStates;
+package characterManagement;
 
+import gameStates.GameState;
+import gameStates.OpenSeasGameState;
 import gui.GamePanel;
 
 import java.awt.Color;
@@ -7,20 +9,18 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import combat.Fighter;
 
-public class TeamArrangingGameState implements GameState {
+public class TeamManagingGameState implements GameState {
+
 	OpenSeasGameState os;
 	Fighter selectedFighter;
-	boolean holdingFighter = false;
 	Fighter[] fighters;
 	int currentIndex = 0;
 	int count = 0;
-	int parentIndex;
-	public TeamArrangingGameState(OpenSeasGameState os)
+	public TeamManagingGameState(OpenSeasGameState os)
 	{
 		this.os=os;
-		this.fighters = os.player.getFighters();
+		this.fighters = os.getPlayer().getFighters();
 		for(int i = 0; i < fighters.length; i++)
 		{
 			if(fighters[i] != null)
@@ -40,15 +40,7 @@ public class TeamArrangingGameState implements GameState {
 		tempg.fillRect(0,0,width, parent.getHeight()*3/5);
 		tempg.setFont(new Font("Rockwell", 30, 30));
 		tempg.setColor(Color.BLACK);
-		if(holdingFighter)
-		{
-		tempg.drawString(selectedFighter.getName() + " selected",width/2 - (tempg.getFontMetrics().stringWidth(selectedFighter.getName() + " selected")/2),30);
-		tempg.drawString("Switch with which pirate?",width/2 - (tempg.getFontMetrics().stringWidth("Switch with which pirate?")/2),75);
-		}
-		else
-		{
-			tempg.drawString("Escape to return to ye game",width/2 - (tempg.getFontMetrics().stringWidth("Escape to return to ye game")/2),30);
-		}
+		tempg.drawString("Escape to return to ye game",width/2 - (tempg.getFontMetrics().stringWidth("Escape to return to ye game")/2),30);
 
 		int widthPer = width/count;
 		for(int i =0; i < fighters.length; i++)
@@ -82,19 +74,7 @@ public class TeamArrangingGameState implements GameState {
 	{
 		if(b)
 		{
-			if(!holdingFighter)
-			{
-			selectedFighter = fighters[currentIndex]; 
-			holdingFighter = true;
-			parentIndex = currentIndex;
-			}
-			else
-			{
-				Fighter temp = fighters[currentIndex];
-				fighters[currentIndex] = selectedFighter;
-				fighters[parentIndex] = temp;
-				holdingFighter = false;
-			}
+			os.getGameInstance().setGameState(new FighterManagerState(this, fighters[currentIndex]));
 		}
 	}
 	@Override 
@@ -134,5 +114,10 @@ public class TeamArrangingGameState implements GameState {
 				currentIndex++;
 			}
 		}
+	}
+
+	public OpenSeasGameState getOPS() 
+	{
+		return os;
 	}
 }

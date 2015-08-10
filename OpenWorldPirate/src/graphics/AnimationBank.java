@@ -13,7 +13,7 @@ public class AnimationBank
 	public static Animation bananaToss = new Animation(new AnimationHandler(){
 		
 		int x = 0;
-		int y = 200;
+		//int y;
 		int xOrigin;
 		GameState toPlayOver;
 		GameInstance gi;
@@ -21,6 +21,8 @@ public class AnimationBank
 		@Override
 		public void play(GameState toPlayOver, GameInstance gi, int xOrigin, int yOrigin) 
 		{
+			this.x = 0;
+			//this.y = yOrigin;
 			this.xOrigin = xOrigin;
 			this.gi = gi;
 			banana = ImageManager.getImage(ImageManager.BANANA);
@@ -34,16 +36,17 @@ public class AnimationBank
 		{
 			toPlayOver.draw(g, parent);
 			int xT = (xOrigin * parent.getWidth())/10;
-			g.drawImage(banana,xT+x,parent.getHeight()-y, parent.getWidth()/20,parent.getHeight()/20, null);
+			if(this.x > parent.getWidth()/2)
+			{
+				this.finish(toPlayOver, gi);
+			}
+			g.drawImage(banana,xT+x,parent.getHeight()*3/5, parent.getWidth()/20,parent.getHeight()/20, null);
 		}
 
 		@Override
 		public void tick() 
 		{
-			x+=4;
-			if(x > 500)
-			{
-				this.finish(toPlayOver, gi);
-			}
+			x+=22;
+
 		}});
 }

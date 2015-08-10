@@ -9,6 +9,10 @@ import javax.swing.JFrame;
 
 public class GameWindow extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1817160912637262130L;
 	GameInstance gi;
 	GamePanel gp;
 public GameWindow(GameInstance gi)

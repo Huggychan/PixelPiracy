@@ -1,9 +1,11 @@
-package combat;
+package characterManagement;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
+
+import combat.Status;
 
 import abilities.Ability;
 import graphics.ImageManager;
@@ -12,7 +14,7 @@ public class Fighter
 {
 Image img;
 protected int width = 10, height = 10;
-int currentHealth, attack, speed, defense;
+int currentHealth, attack, speed;
 String name;
 int maxHealth;
 int maxMana = 100;
@@ -245,5 +247,11 @@ magicPower++;
 public void usePoint() 
 {
 availiblePoints--;
+}
+public int getExpWorth() 
+{
+	int expWorth =0;
+	expWorth += attack + speed + magicPower + maxHealth/2;
+	return expWorth;
 }
 }

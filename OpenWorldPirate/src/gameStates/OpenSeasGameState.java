@@ -1,22 +1,17 @@
 package gameStates;
 
-import entities.Crew;
 import entities.Entity;
-import entities.FightingEntity;
 import entities.Player;
 import gui.GameInstance;
 import gui.GamePanel;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import worldGeneration.WorldGenerator;
 import worldStructure.BlackSquare;
-import worldStructure.BlankOceanSquare;
 import worldStructure.Square;
 
 public class OpenSeasGameState implements GameState
